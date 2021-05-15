@@ -1,0 +1,79 @@
+.Topic{
+    color:rgb(255, 255, 255);
+    font-size: 40px;
+    top: 20px;
+    text-align: center;
+}
+
+.topicholder{
+    position: fixed;
+    background-color:transparent;
+    font-size: 40px;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+body{
+    background-color: black;
+}
+
+.mainbody{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+
+.circle__wrapper { 
+  z-index:-1;
+  position: fixed; 
+  top:30%; 
+  left: 30%; 
+  -webkit-transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%); 
+}
+
+.circle { 
+  display:block; 
+  height: 168px; 
+  width: 168px; 
+  background-image: linear-gradient( rgb(255, 0, 64),rgb(0, 47, 255));
+  background-color: #2deaea; 
+  -webkit-border-radius: 50%; 
+  -moz-border-radius: 50%; 
+  border-radius: 50%; 
+  -webkit-animation: growUp 2s ;
+  -moz-animation: growUp 2s ;
+  -ms-animation: growUp 2s ;
+  -o-animation: growUp 2s ;
+  animation: growUp 2s ;
+  animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes growUp {   
+  0%  { -webkit-transform: scale(0); }
+  100% { -webkit-transform: scale(25); }
+}
+
+@-moz-keyframes growUp {
+  0%  { -moz-transform: scale(0); }
+  100% { -moz-transform: scale(25); }
+}
+
+@-o-keyframes growUp {
+  0%  { -o-transform: scale(0); }
+  100% { -o-transform: scale(25); }
+}
+
+@-ms-keyframes growUp {
+  0%  { -ms-transform: scale(0); }
+  100% { -ms-transform: scale(25); }
+}
+
+@keyframes growUp {
+  0%  { transform: scale(0); }
+  100% { transform: scale(25); }
+}
