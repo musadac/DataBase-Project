@@ -2,6 +2,10 @@
 <html>
 <head>
     <link rel="stylesheet" href="form-page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="animation.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
 <body>
     <div class="mainbody">
@@ -11,7 +15,34 @@
           <div class="topicholder">
              <h1 class="Topic">DATABASE LAB PROJECT</h1>
           </div>
-
+          <div class="formcontainer">
+                <input type="text" placeholder="Name" class="name"/>
+                <input type="text" placeholder="Education" class="education" list="listedu"/>
+                <datalist class="listedu" id="listedu">
+                    <option value="Intermediate">
+                        This level of education is also called the FSc/FA/ICS or 'intermediate'
+                    </option>
+                    <option value="Bachelors">
+                        A Bachelor of Education (B.Ed.) is an undergraduate professional degree which prepares students for work.
+                    </option>
+                    <option value="Masters">
+                         A course of study demonstrating mastery or a high-order overview of a specific field of study or area of professional practice.
+                    </option>
+                    <option value="PHD">
+                        Qualifies the degree holder to teach their chosen subject at university level or to work in a specialized position in their chosen field.
+                    </option>
+                </datalist>
+                <form action="">
+                    <label class="container">Male
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="container">Female
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                  </form>
+          </div>
     </div>
 </body>
 </html>
