@@ -1,0 +1,10 @@
+CREATE TABLE member( userid varchar2(10) NOT NULL,
+gender varchar2(14), 
+name varchar2(14), 
+bdate int NOT NULL, 
+weight int NOT NULL, 
+height int NOT NULL, 
+active_plan varchar2(14),
+musclesize int, 
+BMI int ,
+CONSTRAINT PKmember PRIMARY KEY (userid));

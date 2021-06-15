@@ -1,0 +1,495 @@
+.Topic{
+    color:rgb(255, 255, 255);
+    font-size: 40px;
+    top: 20px;
+    text-align: center;
+}
+
+.topicholder{
+    position: fixed;
+    background-color:transparent;
+    font-size: 40px;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+body{
+    background-color: black;
+}
+
+.mainbody{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+
+.circle__wrapper { 
+  z-index:-1;
+  position: fixed; 
+  top:30%; 
+  left: 30%; 
+  -webkit-transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%); 
+}
+
+.circle { 
+  display:block; 
+  height: 168px; 
+  width: 168px; 
+  background-image: linear-gradient( rgb(255, 0, 251),rgb(0, 255, 247));
+  background-color: #2deaea; 
+  -webkit-border-radius: 50%; 
+  -moz-border-radius: 50%; 
+  border-radius: 50%; 
+  -webkit-animation: growUp 2s ;
+  animation: growUp 2s ;
+  animation-fill-mode: forwards;
+}
+
+.formcontainer{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  height:85%;
+  width: 50%;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  z-index: 10;
+  -webkit-animation: growdown 1s ;
+  animation: growdown 1s ;
+}
+
+
+.Depno{
+   position: absolute;
+   width: 90%;
+   height: 50px;
+   border-radius: 10px;
+   right: 0;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   margin-top: 120px;
+   margin-bottom: auto;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.Depno::placeholder{
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  font-size: large;
+}
+
+.Depno[type=text]{
+  color: rgb(3, 3, 3);
+  padding-left: 10px;
+  font-size: large;
+  border: 2px solid rgb(0, 204, 255);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.Job{
+  position: absolute;
+   width: 90%;
+   height: 50px;
+   border-radius: 10px;
+   right: 0;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   margin-top: 180px;
+   margin-bottom: auto;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.Job::placeholder{
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  font-size: large;
+}
+
+.Job[type=text]{
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  font-size: large;
+  border: 2px solid rgb(0, 204, 255);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+
+
+
+
+
+
+
+.JobTitile{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 240px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .JobTitile::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .JobTitile[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .ManagerID{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 300px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .ManagerID::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .ManagerID[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .HireDate{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 360px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .HireDate::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .HireDate[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .Salary{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 420px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .Salary::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .Salary[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .Commission{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 480px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .Commission::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .Commission[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+
+  .Dept_No_{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 540px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .Dept_No_::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .Dept_No_[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  
+  .Empname{
+    position: absolute;
+     width: 90%;
+     height: 50px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 780px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .Empname::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .Empname[type=text]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+.buttonsa{
+  position: absolute;
+   width: 90%;
+   height: 70px;
+   border-radius: 10px;
+   right: 0;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   margin-top: 650px;
+   margin-bottom: auto;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.buttonsa::placeholder{
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  font-size: large;
+}
+
+.buttonsa[type=submit]{
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  font-size: large;
+  border: 2px solid rgb(0, 204, 255);
+  border-radius: 10px;
+  background-color: red;
+}
+
+.buttonsa:hover{
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  font-size: large;
+  background-color: teal;
+  cursor: pointer;
+}
+
+.buttonsa2{
+    position: absolute;
+     width: 90%;
+     height: 70px;
+     border-radius: 10px;
+     right: 0;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     margin-top: 850px;
+     margin-bottom: auto;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  
+  .buttonsa2::placeholder{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+  }
+  
+  .buttonsa2[type=submit]{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    border: 2px solid rgb(0, 204, 255);
+    border-radius: 10px;
+    background-color: red;
+  }
+  
+  .buttonsa2:hover{
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    font-size: large;
+    background-color: teal;
+    cursor: pointer;
+  }
+
+
+@-webkit-keyframes growUp {   
+  0%  { -webkit-transform: scale(0); }
+  100% { -webkit-transform: scale(25); }
+}
+
+@keyframes growUp {
+  0%  { transform: scale(0); }
+  100% { transform: scale(25); }
+}
+
+@keyframes growdown {
+  0%  { 
+    transform: scale(3);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  50%{
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  60%{
+    transform: scale(0.975);
+  }
+  60%{
+    transform: scale(1.025);
+  }
+  70%{
+    transform: scale(0.98);
+  }
+  80%{
+    transform: scale(1.015);
+  }
+  90%{
+    transform: scale(0.990);
+  }
+  100% { 
+    transform: scale(1); 
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+@-webkit-keyframes growdown {
+  0%  { 
+    transform: scale(3);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  50%{
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  60%{
+    transform: scale(0.975);
+  }
+  60%{
+    transform: scale(1.025);
+  }
+  70%{
+    transform: scale(0.98);
+  }
+  80%{
+    transform: scale(1.015);
+  }
+  90%{
+    transform: scale(0.990);
+  }
+  100% { 
+    transform: scale(1); 
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
