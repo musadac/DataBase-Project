@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div id="main">
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -29,6 +30,14 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <ul class="navbar-nav">
+      <?php
+      session_start();
+        $userid = $_SESSION["userid"];
+        echo ' <li class="nav-item active"><a class="nav-link" href="#">Welcome '.$userid.'<span class="sr-only">(current)</span></a></li>';
+      ?>
+     
+    </ul>
   </div>
 </nav>
 <div id="mySidenav" class="sidenav">

@@ -10,51 +10,7 @@
   </style>
 </head>
 <body>
-<?php
 
-$job=$_POST["Job"];
-$dep=$_POST["Number"];
-
-echo $dep." ".$job."\n";
-
-
-   $db_sid = 
-   "(DESCRIPTION =
-   (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
-   (CONNECT_DATA =
-     (SERVER = DEDICATED)
-     (SERVICE_NAME = musadac)
-   )
- )";           
-
-   $db_user = "scott";   // Oracle username e.g "scott"
-   $db_pass = "tiger";    // Password for user e.g "1234"
-   $con = oci_connect($db_user,$db_pass,$db_sid); 
-   if($con) 
-      { echo "Oracle Connection Successful."; } 
-   else 
-      { die('Could not connect to Oracle: '); } 
-
-      $query = "select * FROM EMP WHERE job='$job' and deptno='$dep'";
-      echo $query;
-      $query_id = oci_parse($con, $query); 		
-      $r = oci_execute($query_id); 
-      while($row = oci_fetch_array($query_id, OCI_BOTH+OCI_RETURN_NULLS)) 
-      { 
-
-          echo "<br>".$row["ENAME"]."<br>";
-			    echo $row["EMPNO"]." ";
-			    echo $row["ENAME"]." ";
-	        echo $row["JOB"]." ";
-	        echo $row["MGR"]." ";
-	        echo $row["HIREDATE"]." ";
-	        echo $row["SAL"]." ";
-	        echo $row["COMM"]." ";
-	        echo $row["DEPTNO"]." ";
-      }
-   
-
-?>
 <div id="main-wrapper" class="container">
     <div class="row justify-content-center">
         <div class="col-xl-10">
@@ -63,30 +19,76 @@ echo $dep." ".$job."\n";
                     <div class="row no-gutters">
                         <div class="col-lg-6">
                             <div class="p-5">
-                                <!-- <div class="alert alert-danger" role="alert">
-                                This is a danger alert—check it out!
-                                </div> -->
+                            <?php
+                                $db_sid = 
+                                "(DESCRIPTION =
+                                (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+                                (CONNECT_DATA =
+                                    (SERVER = DEDICATED)
+                                    (SERVICE_NAME = musadac)
+                                )
+                                )";           
+
+                                $db_user = "scott";   // Oracle username e.g "scott"
+                                $db_pass = "tiger";    // Password for user e.g "1234"
+                                $con = oci_connect($db_user,$db_pass,$db_sid); 
+                                if($con) 
+                                    {  } 
+                                else 
+                                    { die('Could not connect to Oracle: '); } 
+
+                                    if (isset($_POST["C"])){ 
+                                        $userid=$_POST["userid"];
+                                        $height=$_POST["height"];
+                                        $weight=$_POST["weight"];
+                                        $date=$_POST["date"];
+                                        $gender=$_POST["gender"];
+                                        $muscle=$_POST["muscle"];
+                                        $email=$_POST["email"];
+                                        $password=$_POST["password"];
+                                        $bmi = ((int)$weight/((int)$height/39.37));
+                                        $query = "insert into member values ('$userid','$gender','$email','$date','$weight','$height','','$muscle','$bmi','$password')";
+                                        $query_id = oci_parse($con, $query); 		
+                                        $r = oci_execute($query_id);
+                                        if($r){
+                                            echo '<div class="alert alert-success" role="alert">
+                                            Registered <a href="/login.php">Login</a>
+                                         </div>';      
+                                        }
+                                        else{
+                                            echo '<div class="alert alert-danger" role="alert">
+                                            Already Registered
+                                        </div>';
+                                        
+                                        }
+                                    }
+                                    
+                                ?>
                                 <div class="mb-5">
                                     <h3 class="h4 font-weight-bold text-theme">Register</h3>
                                 </div>
                                 <h6 class="h5 mb-0">Just Do.</h6>
                                 <p class="text-muted mt-2 mb-5">If You Really Want To Track your Fitness.</p>
-                                <form novalidate>
+                                <form method="POST">
                                     <div class="form-group">
-                                        <label for="yourName">Your name</label>
-                                        <input type="text" class="form-control" id="yourName" required />
+                                        <label for="yourName">UserID</label>
+                                        <input type="text" class="form-control" name="userid" required />
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="exampleInputPassword1">Height</label>
-                                        <input type="text" placeholder="in Inches" class="form-control" id="height"  required/>
+                                        <input type="text" placeholder="in Inches" class="form-control" name="height"  required/>
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="exampleInputPassword1">Weight</label>
-                                        <input type="text" placeholder="in Kgs" class="form-control" id="weight" required />
+                                        <input type="text" placeholder="in Kgs" class="form-control" name="weight" required />
+                                    </div>
+                                    <div class="form-group mb-5">
+                                        <label for="exampleInputPassword1">Date</label>
+                                        <input type="date" placeholder="in Kgs" class="form-control" name="date" required />
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="exampleInputPassword1">Gender</label>
-                                        <input  list="descri" class="form-control" id="gender" required />
+                                        <input  list="descri" class="form-control" name="gender" required />
                                         <datalist id="descri" >
                                                 <option value="Male"> </option>
                                                 <option value="Female"> </option>
@@ -94,7 +96,7 @@ echo $dep." ".$job."\n";
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="exampleInputPassword1">Muscle Type</label>
-                                        <input  list="descris" class="form-control" id="muscle" required />
+                                        <input  list="descris" class="form-control" name="muscle" required />
                                         <datalist id="descris" >
                                                 <option value="Abs"> </option>
                                                 <option value="Triceps"> </option>
@@ -104,14 +106,14 @@ echo $dep." ".$job."\n";
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="email" />
+                                        <input type="email" class="form-control" name="email" />
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="password" />
+                                        <input type="password" class="form-control" name="password" />
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-theme">Register</button>
+                                    <button type="submit" class="btn btn-theme" name="C">Register</button>
                                 </form>
                             </div>
                         </div>
