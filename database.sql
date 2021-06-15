@@ -1,10 +1,65 @@
-CREATE TABLE member( userid varchar2(10) NOT NULL,
+CREATE TABLE member( userid varchar2(20) NOT NULL,
 gender varchar2(14), 
-name varchar2(14), 
-bdate int NOT NULL, 
-weight int NOT NULL, 
-height int NOT NULL, 
+email varchar2(40), 
+bdate varchar(10) NOT NULL, 
+weight number NOT NULL, 
+height number NOT NULL, 
 active_plan varchar2(14),
-musclesize int, 
-BMI int ,
+musclesize varchar2(14), 
+BMI number ,
+password varchar2(40), 
 CONSTRAINT PKmember PRIMARY KEY (userid));
+
+
+
+
+
+CREATE SEQUENCE workout_sequence;
+
+CREATE TABLE workout_plan( userid varchar2(20) NOT NULL,
+dno number NOT NULL primary key,
+protein varchar2(14),
+fats varchar2(14),
+carbohydrates varchar2(14),
+CONSTRAINT FKworkoutplan1 FOREIGN KEY (userid) REFERENCES member(userid) ,
+CONSTRAINT FKworkoutplan2 FOREIGN KEY (dno) REFERENCES workout_plan (dno));
+
+CREATE OR REPLACE TRIGGER workout_on_insert
+  BEFORE INSERT ON workout_plan
+  FOR EACH ROW
+BEGIN
+  SELECT workout_sequence.nextval
+  INTO :new.dno
+  FROM dual;
+END;
+/
+
+
+CREATE TABLE equipment( name varchar(14) NOT NULL,
+model number NOT NULL,
+CONSTRAINT PKequipment PRIMARY KEY (model));
+
+
+
+CREATE TABLE exercise( dno number NOT NULL primary key ,
+ex_name varchar2(14) NOT NULL,
+model number NOT NULL,
+target_muscle varchar2(14) NOT NULL,
+duration int NOT NULL,
+CONSTRAINT FKexercise1 FOREIGN KEY (dno) REFERENCES workout_plan(dno),
+CONSTRAINT FKexercise FOREIGN KEY (model) REFERENCES equipment (model));
+
+
+
+
+
+
+
+
+
+
+
+insert into workout_plan(dno,userid,protein,fats,carbohydrates)
+values(2,'musadac1','2','2','2');
+
+
