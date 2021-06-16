@@ -91,12 +91,12 @@
   <div class="row text-center slideanim">
     <div class="col-sm-6">
       <div class="thumbnail">
-        <img src="e1.jpg" alt="Paris" width="400" height="300">
+        <img src="Images/e1.jpg" alt="" width="400" height="300">
       </div>
     </div>
     <div class="col-sm-6">
       <div class="thumbnail">
-        <img src="e2.jpg" alt="New York" width="400" height="300">
+        <img src="Images/e2.jpg" alt="" width="400" height="300">
       </div>
     </div>
   </div><br>

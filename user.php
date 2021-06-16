@@ -26,24 +26,29 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
     <ul class="navbar-nav">
       <?php
+       if (isset($_POST["B"])){
+        $_SESSION["userid"] = "";
+        header("Location: http://localhost/mainlanding.php", true, 301);
+        exit();
+       }
       session_start();
         $userid = $_SESSION["userid"];
         echo ' <li class="nav-item active"><a class="nav-link" href="#">Welcome '.$userid.'<span class="sr-only">(current)</span></a></li>';
       ?>
      
     </ul>
+    <form class="form-inline my-2 my-lg-0" method="POST">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="B">LOGOUT</button>
+    </form>
+   
   </div>
 </nav>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/progress.php">PROGRESS LOG</a>
-  <a href="#">REPORTS</a>
+  <a href="/reports.php">REPORTS</a>
   <a href="/createworkout.php">CREATE WORKOUT PLAN</a>
 </div>
 

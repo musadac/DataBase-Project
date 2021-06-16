@@ -1,3 +1,10 @@
+
+DROP TABLE log;
+DROP TABLE exercise;
+DROP TABLE equipment;
+DROP TABLE workout_plan;
+DROP TABLE member;
+
 CREATE TABLE member( userid varchar2(20) NOT NULL,
 gender varchar2(14), 
 email varchar2(40), 
@@ -45,27 +52,37 @@ today varchar2(16) NOT NULL,
 carbohydrate_intake varchar2(14) NOT NULL,
 fat_intake varchar2(14) NOT NULL,
 protein_intake varchar2(14) NOT NULL,
-weight int NOT NULL,
+weight number NOT NULL,
 CONSTRAINT PKlog PRIMARY KEY (today),
 CONSTRAINT FKlog FOREIGN KEY (userid) REFERENCES member (userid));
 
 
 
-
-
-
-CREATE SEQUENCE workout_sequence;
-
-insert into workout_plan(dno,userid,protein,fats,carbohydrates)
-values(2,'musadac1','2','2','2');
-
-
-CREATE OR REPLACE TRIGGER workout_on_insert
-  BEFORE INSERT ON workout_plan
-  FOR EACH ROW
+CREATE OR REPLACE PROCEDURE workout(userids varchar2, todays varchar2,
+ carbohydrate_intakes varchar2,fat_intakes varchar2,
+  protein_intakes varchar2, weights number) IS
+   the_height NUMBER;
+   cal_BMI NUMBER;
 BEGIN
-  SELECT workout_sequence.nextval
-  INTO :new.dno
-  FROM dual;
+       SELECT height INTO the_height FROM member where userid = userids;
+       cal_BMI := weights/(the_height/39.37);
+       UPDATE member
+       SET BMI =cal_BMI,weight = weights
+       where userid =userids;
+      insert into log
+        values(userids,todays,carbohydrate_intakes,fat_intakes,
+        protein_intakes,weights);
+
 END;
 /
+INSERT INTO equipment VALUES ('Dumbell',0);
+INSERT INTO equipment VALUES ('Treadmill',1);
+INSERT INTO equipment VALUES ('Cycle',2);
+INSERT INTO equipment VALUES ('Pullups',3);
+INSERT INTO member VALUES ('admin','male', 'admin@fitme.com', '1/1/1', '0', '0', '1','null', 5 ,'1234');
+INSERT INTO workout_plan VALUES ('admin',0, '2', '2', '2','Weekly');
+INSERT INTO exercise VALUES (0,'Hallo', 0, 'Abs', 50);
+
+
+
+COMMIT;

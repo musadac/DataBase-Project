@@ -31,7 +31,7 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/user.php">Home</a>
-  <a href="#">REPORTS</a>
+  <a href="/reports.php">REPORTS</a>
   <a href="/createworkout.php">CREATE WORKOUT PLAN</a>
   <?php
       session_start();
@@ -68,7 +68,19 @@
             if($r){
                 echo '<div class="alert alert-success" role="alert">
                 Data Logged
-              </div>';      
+              </div>'; 
+              $query = "select height  from member where userid = '$userid'";
+              $query_id = oci_parse($con, $query); 		
+              $r = oci_execute($query_id);
+              $x=oci_fetch_array($query_id, OCI_BOTH+OCI_RETURN_NULLS);
+              $height = $x[0];
+              $height = $height + 1;  
+              $bmi = ((int)$weight/((int)$height/39.37));
+              $query = "update member
+              SET BMI ='$bmi',weight = '$weight'
+              where userid ='$userid'";
+            $query_id = oci_parse($con, $query); 		
+            $r = oci_execute($query_id);   
             }
             else{
                 echo '<div class="alert alert-danger" role="alert">
