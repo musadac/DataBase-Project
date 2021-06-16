@@ -47,34 +47,53 @@
   <a href="/createworkout.php">CREATE WORKOUT PLAN</a>
 </div>
 
-
-
 <?php
-for ($x = 0; $x <= 100; $x+=1) {
-  $y = $x%12;
-  echo '<div class="container">    
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Musa Workout</div>
-        <div class="panel-body"><img src="images/e'.$y.'.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      $db_sid = 
+      "(DESCRIPTION =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+      (CONNECT_DATA =
+        (SERVER = DEDICATED)
+        (SERVICE_NAME = musadac)
+      )
+    )";           
 
-            <button>ACTIVATE</button>
+      $db_user = "scott";   // Oracle username e.g "scott"
+      $db_pass = "tiger";    // Password for user e.g "1234"
+      $con = oci_connect($db_user,$db_pass,$db_sid); 
+      $query = "SELECT * FROM EXERCISE, WORKOUT_PLAN";
+      $query_id = oci_parse($con, $query); 		
+      $r = oci_execute($query_id); 
+      $x=0;
+      while($row = oci_fetch_array($query_id, OCI_BOTH+OCI_RETURN_NULLS)) 
+      { 
+        $y = $x%12;
+        $x = $x+1;
+        echo '<div class="container">    
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="panel panel-primary">
+              <div class="panel-heading">'.$row['TYPE'].' WORKOUT</div>
+              <div class="panel-body"><img src="images/e'.$y.'.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">Exercise Name:'.$row['EX_NAME'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+                  <button>ACTIVATE</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>';
-}
-?>
+      </div>';
+      }
+      
+
+    ?>
+
 
 <script>
 function openNav() {

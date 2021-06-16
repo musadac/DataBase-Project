@@ -33,8 +33,52 @@
   <a href="/user.php">Home</a>
   <a href="#">REPORTS</a>
   <a href="/createworkout.php">CREATE WORKOUT PLAN</a>
+  <?php
+      session_start();
+        $userid = $_SESSION["userid"];
+      ?>
 </div>
+<?php
+    $db_sid = 
+    "(DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+        (SERVER = DEDICATED)
+        (SERVICE_NAME = musadac)
+    )
+    )";           
 
+    $db_user = "scott";   // Oracle username e.g "scott"
+    $db_pass = "tiger";    // Password for user e.g "1234"
+    $con = oci_connect($db_user,$db_pass,$db_sid); 
+    if($con) 
+        {  } 
+    else 
+        { die('Could not connect to Oracle: '); } 
+
+        if (isset($_POST["C"])){ 
+            $date=$_POST["date"];
+            $fatintake=$_POST["fatintake"];
+            $carbointake=$_POST["carbointake"];
+            $prointake=$_POST["prointake"];
+            $weight=$_POST["weight"];
+            $query = "insert into log values ('$userid','$date','$carbointake','$fatintake','$prointake','$weight')";
+            $query_id = oci_parse($con, $query); 		
+            $r = oci_execute($query_id);
+            if($r){
+                echo '<div class="alert alert-success" role="alert">
+                Data Logged
+              </div>';      
+            }
+            else{
+                echo '<div class="alert alert-danger" role="alert">
+                Error
+            </div>';
+            
+            }
+        }
+        
+    ?>
 
 <div id="main-wrapper" class="container">
     <div class="row justify-content-center">
@@ -49,35 +93,29 @@
                                 </div>
                                 <h6 class="h5 mb-0">Just Do.</h6>
                                 <p class="text-muted mt-2 mb-5">With Sincerity.</p>
-                                <form>
-                                    <div class="form-group">
+                                <form method="POST">
+                                    <div class="form-group  mb-5">
                                         <label for="yourName">Date</label>
-                                        <?php
-                                            $date = date("m/d/Y");
-                                            echo '<div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value='.$date.'>
-                                          </div>';
-                                          
-                                        ?>
+                                        <input type="date" placeholder="in Kgs" class="form-control" name="date" required />
                                     </div>
                                     <div class="form-group">
                                         <label for="fatintake">Fats Intake</label>
-                                        <input type="text" class="form-control" id="fatintake" />
+                                        <input type="text" class="form-control" name="fatintake" />
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="prointake">Protein Intake</label>
-                                        <input type="text" class="form-control" id="prointake" />
+                                        <input type="text" class="form-control" name="prointake" />
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="carbointake">Carbohydrtae Intake</label>
-                                        <input type="text" class="form-control" id="carbointake" />
+                                        <input type="text" class="form-control" name="carbointake" />
                                     </div>
                                     <div class="form-group mb-5">
                                         <label for="weight">Weight</label>
-                                        <input type="text" class="form-control" id="weight" />
+                                        <input type="text" class="form-control" name="weight" />
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-theme">LOG</button>
+                                    <button type="submit" class="btn btn-theme" name="C">LOG</button>
                                 </form>
                             </div>
                         </div>
